@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">EasyDo</string>
+    <string name="open">打开侧边栏</string>
+    <string name="close">关闭侧边栏</string>
+</resources>
