@@ -8,7 +8,7 @@
         app:showAsAction="ifRoom"/>
 
     <item android:id="@+id/action_settings"
-        android:title="TestNode"
+        android:title="刷新列表"
         android:orderInCategory="100"
         android:icon="@mipmap/ic_launcher"
         app:showAsAction="never"/>

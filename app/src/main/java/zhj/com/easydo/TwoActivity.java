@@ -10,10 +10,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class TwoActivity extends AppCompatActivity {
     TextView back_mark, ok_mark;
     EditText getMemo;
     String Memo_content;
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");// HH:mm:ss
+    Date date = new Date(System.currentTimeMillis());
+    TextView time;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +32,8 @@ public class TwoActivity extends AppCompatActivity {
         ok_mark = (TextView)findViewById(R.id.mark_ok);
         back_mark.setOnClickListener(new markClick());
         ok_mark.setOnClickListener(new markClick());
+        time = (TextView)findViewById(R.id.NowTime);
+        time.setText(simpleDateFormat.format(date));
     }
     class markClick implements OnClickListener{
         @Override
@@ -32,8 +41,9 @@ public class TwoActivity extends AppCompatActivity {
             if (v == back_mark){
                 Intent intent = new Intent();
                 intent.setClass(TwoActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
-                //TwoActivity.this.finish();
+                TwoActivity.this.finish();
             }
             else if (v == ok_mark){
                 // 如果输入内容不为空，则传递消息
@@ -45,6 +55,7 @@ public class TwoActivity extends AppCompatActivity {
                     Intent intent = new Intent();
                     //intent.putExtra("new", Memo_content);   // 以键为new传递消息
                     intent.setClass(TwoActivity.this, MainActivity.class);
+                    //intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     Bundle bundle = new Bundle();
                     bundle.putString("new", Memo_content);
                     intent.putExtras(bundle);

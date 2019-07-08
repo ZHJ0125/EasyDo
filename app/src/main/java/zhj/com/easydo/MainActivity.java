@@ -18,7 +18,6 @@ import android.graphics.Color;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.widget.LinearLayout;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -82,8 +81,12 @@ public class MainActivity extends AppCompatActivity {
                         //setContentView(R.layout.make_new_memory);       // 直接切换Activity的方式
                         Intent intent = new Intent();
                         intent.setClass(MainActivity.this, TwoActivity.class);
+                        //txt = findViewById(R.id.textList);
+                        //txt.setText("change!!!!");
+                        //createFile();
+                        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         startActivity(intent);
-                        //MainActivity.this.finish();       // 系统会关闭掉之前的Activity
+                        MainActivity.this.finish();       // 系统会关闭掉之前的Activity
                         break;
                     case R.id.action_settings:
                         Toast.makeText(MainActivity.this, "刷新消息列表内容", Toast.LENGTH_SHORT).show();
@@ -93,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent2 = getIntent();
                         Bundle bundle = intent2.getExtras();
                         msg = bundle.getString("new","Nothing");
-                        if (msg == null){
+                        if (msg.equals(null)){
                             Toast.makeText(MainActivity.this, "暂无新消息", Toast.LENGTH_SHORT).show();
                         }
                         else{
@@ -114,14 +117,16 @@ public class MainActivity extends AppCompatActivity {
                 "打扫实验室卫生",
                 "进行Android实训"
         };*/
+
         itemArrey = new ArrayList<String>();
+        /*txt = findViewById(R.id.textList);
+        txt.setText("new itemArrey!!");*/
         itemArrey.add("安排实验室人员");
         itemArrey.add("打扫实验室卫生");
         itemArrey.add("进行Android实训");
         itemAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, itemArrey);
         list.setAdapter(itemAdapter);
         list.setOnItemClickListener(new mItemClick());
-
     }
 
     //监听ListView点击事件
@@ -161,4 +166,21 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    /*// 创建文件
+    private void createFile() {
+        //传入路径 + 文件名
+        File mFile = new File("/sdcard/test.txt");
+        if (!mFile.exists()) {
+            //mFile.delete();
+            try {
+                //创建文件
+                mFile.createNewFile();
+                //给一个吐司提示，提示创建成功
+                Toast.makeText(MainActivity.this, "文件创建成功", Toast.LENGTH_SHORT).show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }*/
 }
