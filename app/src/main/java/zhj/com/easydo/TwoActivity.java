@@ -21,7 +21,6 @@ public class TwoActivity extends AppCompatActivity {
     Date date = new Date(System.currentTimeMillis());
     TextView time;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
