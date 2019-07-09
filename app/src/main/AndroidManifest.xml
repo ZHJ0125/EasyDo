@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".TwoActivity"></activity>
         <activity android:name=".MainActivity"></activity>
+        <activity android:name=".getTimeActivity"></activity>
+        <activity android:name=".getDateActivity"></activity>
     </application>
 
 </manifest>

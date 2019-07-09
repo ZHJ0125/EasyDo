@@ -37,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        toolinit();
+        listinit();
+    }
+
+    void toolinit(){
         // 创建toolbar对象
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -110,7 +115,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
 
+    void listinit(){
         //下面是ListView对象的设置
         list = (ListView)findViewById(R.id.listView);
         /*String data[] = {
@@ -168,20 +175,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /*// 创建文件
-    private void createFile() {
-        //传入路径 + 文件名
-        File mFile = new File("/sdcard/test.txt");
-        if (!mFile.exists()) {
-            //mFile.delete();
-            try {
-                //创建文件
-                mFile.createNewFile();
-                //给一个吐司提示，提示创建成功
-                Toast.makeText(MainActivity.this, "文件创建成功", Toast.LENGTH_SHORT).show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }*/
 }
